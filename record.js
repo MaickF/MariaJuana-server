@@ -120,7 +120,7 @@ recordRoutes.post('/add/producto', (req, res) =>{
 recordRoutes.post('/add/factura', (req, res) =>{
   let myobj = {
       id: req.body.id,        
-      idUs: req.body.idUsuario,
+      usuario: req.body.idUsuario,
       fecha: req.body.fecha,
       monto: req.body.monto,
     };
