@@ -117,6 +117,20 @@ recordRoutes.post('/add/producto', (req, res) =>{
     });
 });
 
+recordRoutes.post('/add/factura', (req, res) =>{
+  let myobj = {
+      id: req.body.id,        
+      idUs: req.body.idUsuario,
+      fecha: req.body.fecha,
+      monto: req.body.monto,
+    };
+    console.log(req.body);
+  dbo.connection.db.collection("Factura").insertOne(myobj, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 recordRoutes.post('/producto/actualizar', (req, res) =>{  
   dbo.connection.useDb('MariajuanaDb').collection("Producto")
   .updateOne({_id: ObjectId(req.body._id)},{$set:
