@@ -206,8 +206,7 @@ recordRoutes.post('/question', (req, res) =>{
 });
 
 recordRoutes.get('/promociones', (req, res) =>{
-  dbo.connection.useDb('MariajuanaDb').collection("Promocion").aggregate(
-    [{$lookup:{from :"Producto",localField:"productoId",foreignField:"_id", as: "producto"}}])
+  dbo.connection.useDb('MariajuanaDb').collection("Promocion").find({})
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
