@@ -161,6 +161,17 @@ recordRoutes.post('/producto/actualizar', (req, res) =>{
   })
 });
 
+recordRoutes.post('/producto/actualizar/cantidad', (req, res) =>{  
+  dbo.connection.useDb('MariajuanaDb').collection("Producto")
+  .updateOne({_id: ObjectId(req.body._id)},{$set:
+    {
+      cantidad:req.body.cantidad,
+    }}, function(err,result){
+    if (err) console.log (err);
+    res.json(result);
+  })
+});
+
 recordRoutes.delete('/producto/borrar', (req, res) => {
   dbo.connection.useDb('MariajuanaDb').collection("Producto").deleteOne({_id: ObjectId(req.body._id)}, function (err, result) {
     if (err) console.log (err);
