@@ -137,6 +137,7 @@ recordRoutes.post('/add/compra', (req, res) =>{
       producto: req.body.producto,
       precio: req.body.precio,
       cantidad: req.body.cantidad,
+      categoria: req.body.categoria,
     };
     console.log(req.body);
   dbo.connection.db.collection("Compra").insertOne(myobj, function (err, result) {
