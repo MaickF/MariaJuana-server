@@ -123,6 +123,7 @@ recordRoutes.post('/add/factura', (req, res) =>{
       usuario: req.body.idUsuario,
       fecha: req.body.fecha,
       monto: req.body.monto,
+      estado: req.body.estado, 
     };
     console.log(req.body);
   dbo.connection.db.collection("Factura").insertOne(myobj, function (err, result) {
