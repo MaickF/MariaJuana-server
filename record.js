@@ -225,5 +225,15 @@ recordRoutes.get('/promociones', (req, res) =>{
     });
 }); 
 
+recordRoutes.get('/publicidad/promociones', (req, res) =>{
+  dbo.connection.useDb('MariajuanaDb').collection("Promocion").aggregate(
+    [{$lookup:{from :"Producto",localField:"ProductoId",foreignField:"_id", as: "producto"}}])
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+}
+);
+
 
 module.exports = recordRoutes;
